@@ -257,6 +257,16 @@
   .qa .a{padding:0 0 26px;color:var(--encre-soft);max-width:720px;font-size:1rem;font-weight:300;line-height:1.75}
   .qa-list{margin-top:42px}
 
+  /* ---- Avis / Témoignages ---- */
+  .reviews{background:var(--parchemin-2)}
+  .reviews .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 32px;margin-top:42px}
+  .review{border-left:2px solid var(--laiton);padding:4px 0 4px 22px}
+  .review p{font-family:var(--display);font-style:italic;font-size:1.18rem;color:var(--encre);line-height:1.5;margin-bottom:.7rem}
+  .review .who{font-family:var(--body);font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--laiton)}
+  .reviews .empty{margin-top:34px;max-width:580px}
+  .reviews .empty p{color:var(--encre-soft);font-size:1.05rem;font-weight:300;line-height:1.7;margin-bottom:1.7rem}
+  @media(max-width:860px){.reviews .review-grid{grid-template-columns:1fr}}
+
   /* ---- Closing CTA ---- */
   .closing{position:relative;overflow:hidden;text-align:center;color:var(--cream);padding:104px 0;
     background:radial-gradient(120% 130% at 50% -10%,var(--violet-soft) 0%,var(--violet) 26%,var(--indigo-800) 60%,var(--indigo-900) 100%)}
@@ -320,6 +330,7 @@
     <div class="nav-links">
       <a href="#methode">La méthode</a>
       <a href="#consultations">Consultations</a>
+      <a href="#avis">Avis</a>
       <a href="#faq">FAQ</a>
       <a href="#lettre">La lettre</a>
     </div>
@@ -486,6 +497,24 @@
   </div>
 </section>
 
+<!-- ============ AVIS / TÉMOIGNAGES ============ -->
+<section class="reviews" id="avis">
+  <div class="wrap reveal">
+    <span class="eyebrow">Les retours</span>
+    <h2 class="measure">Ce qu'on en dit</h2>
+    <div class="empty">
+      <p>Les premiers retours de mes consultant·es seront bientôt partagés ici. Vous avez fait une lecture avec moi&nbsp;? Votre regard sincère m'aiderait beaucoup — et guiderait celles et ceux qui hésitent encore à franchir le pas.</p>
+      <a class="btn btn-ink" href="#" target="_blank" rel="noopener">Laisser un avis</a>
+    </div>
+    <!-- ▶︎ Quand vous aurez des avis, remplacez le bloc .empty ci-dessus par celui-ci (et ajoutez autant de cartes .review que voulu) :
+    <div class="review-grid">
+      <div class="review"><p>« Le retour de la personne, en quelques phrases sincères. »</p><div class="who">— Prénom, 47 ans</div></div>
+      <div class="review"><p>« Un autre retour. »</p><div class="who">— Prénom, 52 ans</div></div>
+    </div>
+    -->
+  </div>
+</section>
+
 <!-- ============ FAQ ============ -->
 <section class="faq" id="faq">
   <div class="wrap reveal">
@@ -604,7 +633,7 @@
     <div class="tagline">Astrologie transgénérationnelle &amp; humaniste</div>
     <p class="legal">
       Lecture symbolique et psychologique de votre thème. Aucune promesse de résultat, aucune emprise. Ne se substitue pas à un suivi médical ou psychologique.
-      <br /><a href="#">Mentions légales</a> · <a href="#">Confidentialité</a> · <a href="mailto:cygnastro@gmail.com">Me contacter</a>
+      <br /><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a> · <a href="mailto:cygnastro@gmail.com">Me contacter</a>
     </p>
     <div class="copy">© <span id="y"></span> Cygnastro</div>
   </div>
