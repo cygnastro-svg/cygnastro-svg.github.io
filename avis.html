@@ -71,6 +71,15 @@
   .consent input{margin-top:4px;width:17px;height:17px;flex:0 0 auto;accent-color:var(--laiton)}
   .consent label{font-size:.86rem;font-weight:300;color:var(--encre-soft);line-height:1.55}
 
+  /* Cases à cocher (prestations — choix multiple) */
+  .checks{display:flex;flex-direction:column;gap:9px}
+  .checks label{display:flex;gap:12px;align-items:center;font-size:.95rem;font-weight:300;color:var(--encre);
+    background:var(--parchemin);border:1px solid var(--parchemin-2);border-radius:3px;padding:12px 15px;cursor:pointer;
+    transition:border-color .15s ease,background .15s ease}
+  .checks label:hover{border-color:var(--laiton)}
+  .checks input{width:18px;height:18px;flex:0 0 auto;accent-color:var(--laiton);cursor:pointer}
+  .checks input:checked + span{font-weight:500;color:var(--encre)}
+
   /* Honeypot anti-spam (invisible) */
   .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
 
@@ -128,14 +137,13 @@
         </div>
 
         <div class="field">
-          <label class="lab" for="accompagnement">Qu'avez-vous suivi avec Cygnastro&nbsp;? <span class="opt">(facultatif)</span></label>
-          <select id="accompagnement" name="accompagnement">
-            <option value="">— Choisir —</option>
-            <option>La Cartographie de lignée</option>
-            <option>L'entretien découverte</option>
-            <option>La lettre de Cygnastro</option>
-            <option>Autre</option>
-          </select>
+          <label class="lab" id="presta-lab">Qu'avez-vous suivi avec Cygnastro&nbsp;? <span class="opt">(une ou plusieurs réponses — facultatif)</span></label>
+          <div class="checks" role="group" aria-labelledby="presta-lab">
+            <label><input type="checkbox" name="accompagnement" value="La Cartographie de lignée" /><span>La Cartographie de lignée</span></label>
+            <label><input type="checkbox" name="accompagnement" value="L'entretien découverte" /><span>L'entretien découverte</span></label>
+            <label><input type="checkbox" name="accompagnement" value="La lettre de Cygnastro" /><span>La lettre de Cygnastro</span></label>
+            <label><input type="checkbox" name="accompagnement" value="Autre" /><span>Autre</span></label>
+          </div>
         </div>
 
         <div class="field">
