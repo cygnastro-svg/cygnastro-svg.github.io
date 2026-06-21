@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#0E0F24" />
+<title>Laisser un avis — Cygnastro</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E0F24'/%3E%3Cpath d='M16 4.5 L17.7 14.3 L27.5 16 L17.7 17.7 L16 27.5 L14.3 17.7 L4.5 16 L14.3 14.3 Z' fill='%23DEB970'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<!--
+  ▶▶▶ UNE SEULE CHOSE À FAIRE AVANT DE METTRE EN LIGNE ◀◀◀
+  1. Allez sur https://web3forms.com  → entrez l'adresse cygnastro@gmail.com  → cliquez "Create Access Key".
+  2. Vous recevez une clé (du type 1a2b3c4d-....) par e-mail.
+  3. Remplacez ci-dessous VOTRE_CLE_WEB3FORMS_ICI par cette clé (gardez les guillemets).
+  Les avis arriveront alors directement dans la boîte cygnastro@gmail.com. Aucune donnée n'est stockée chez Web3Forms.
+-->
+
+<style>
+  :root{
+    --indigo-900:#0E0F24; --indigo-800:#181A3E; --violet:#3B2A66; --violet-soft:#4a2f7a;
+    --parchemin:#F3ECDD; --parchemin-2:#EAE0C9; --encre:#23254A; --encre-soft:#4a4d72;
+    --cream:#ECE5D5; --cream-soft:#c9c4bb; --laiton:#C39A56; --laiton-bright:#DEB970;
+    --display:'Playfair Display',Georgia,serif; --body:'Montserrat',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--encre);background:var(--parchemin);line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  h1,h2{font-family:var(--display);font-weight:500;line-height:1.18}
+
+  /* Bandeau marque */
+  .topbar{background:radial-gradient(120% 140% at 80% 0%, var(--violet-soft) 0%, var(--violet) 30%, var(--indigo-800) 65%, var(--indigo-900) 100%);padding:20px 0}
+  .topbar .inner{max-width:760px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{font-family:var(--display);font-size:1.45rem;font-weight:600;color:var(--cream);text-decoration:none;display:flex;align-items:center;gap:9px;letter-spacing:.01em}
+  .brand .dot{color:var(--laiton-bright);font-size:.8rem}
+  .back{font-size:.74rem;font-weight:500;letter-spacing:.04em;color:var(--cream-soft);text-decoration:none}
+  .back:hover{color:var(--laiton-bright)}
+
+  /* Carte */
+  .shell{max-width:760px;margin:0 auto;padding:54px 24px 80px}
+  .card{background:#fff;border:1px solid var(--parchemin-2);border-radius:6px;padding:clamp(28px,5vw,52px);box-shadow:0 18px 50px rgba(14,15,36,.07)}
+  .star{display:block;width:30px;height:30px;margin:0 auto 18px}
+  .eyebrow{display:block;text-align:center;text-transform:uppercase;letter-spacing:.22em;font-size:.68rem;font-weight:600;color:var(--laiton);margin-bottom:.8rem}
+  h1{font-size:clamp(1.7rem,4vw,2.2rem);text-align:center;margin-bottom:1.1rem}
+  .intro{text-align:center;max-width:520px;margin:0 auto 8px;font-weight:300;color:var(--encre-soft);font-size:1.02rem}
+  .sign{text-align:center;font-family:var(--display);font-style:italic;color:var(--laiton);margin-bottom:34px}
+
+  /* Champs */
+  .field{margin-bottom:26px}
+  label.lab{display:block;font-size:.82rem;font-weight:600;letter-spacing:.02em;margin-bottom:9px}
+  label.lab .opt{font-weight:400;color:var(--encre-soft);letter-spacing:0}
+  input[type=text],input[type=email],select,textarea{
+    width:100%;font-family:var(--body);font-size:1rem;color:var(--encre);
+    background:var(--parchemin);border:1px solid var(--parchemin-2);border-radius:3px;padding:13px 15px;transition:border-color .2s ease,box-shadow .2s ease}
+  textarea{min-height:150px;resize:vertical;line-height:1.6}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--laiton);box-shadow:0 0 0 3px rgba(195,154,86,.18)}
+  ::placeholder{color:#9a9684;font-weight:300}
+
+  /* Étoiles (note) */
+  .stars{display:inline-flex;flex-direction:row-reverse;justify-content:flex-end;gap:4px}
+  .stars input{position:absolute;opacity:0;width:0;height:0}
+  .stars label{cursor:pointer;font-size:1.85rem;line-height:1;color:#d8cfba;transition:color .15s ease}
+  .stars label:hover,.stars label:hover ~ label,
+  .stars input:checked ~ label{color:var(--laiton-bright)}
+  .stars:focus-within label{outline:none}
+
+  /* Consentement */
+  .consent{display:flex;gap:12px;align-items:flex-start;background:var(--parchemin);border:1px solid var(--parchemin-2);border-radius:3px;padding:14px 16px}
+  .consent input{margin-top:4px;width:17px;height:17px;flex:0 0 auto;accent-color:var(--laiton)}
+  .consent label{font-size:.86rem;font-weight:300;color:var(--encre-soft);line-height:1.55}
+
+  /* Honeypot anti-spam (invisible) */
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+
+  .btn{font-family:var(--body);font-size:.82rem;font-weight:600;letter-spacing:.06em;border:none;cursor:pointer;
+    background:var(--laiton);color:var(--indigo-900);padding:16px 30px;border-radius:2px;width:100%;
+    transition:background .25s ease,transform .2s ease}
+  .btn:hover:not(:disabled){background:var(--laiton-bright);transform:translateY(-2px)}
+  .btn:disabled{opacity:.6;cursor:default}
+  input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--laiton-bright);outline-offset:3px}
+
+  .err{display:none;margin-top:16px;font-size:.88rem;color:#9a3b3b;background:#fbeeee;border:1px solid #e6c9c9;border-radius:3px;padding:12px 14px}
+
+  /* Remerciement */
+  .thanks{display:none;text-align:center;padding:14px 4px}
+  .thanks h2{font-size:1.6rem;margin-bottom:14px}
+  .thanks p{font-weight:300;color:var(--encre-soft);max-width:440px;margin:0 auto 10px}
+  .thanks .sign2{font-family:var(--display);font-style:italic;color:var(--laiton);margin-top:6px}
+  .thanks a{display:inline-block;margin-top:24px;font-size:.78rem;font-weight:600;letter-spacing:.05em;color:var(--laiton);text-decoration:none;border-bottom:1px solid var(--laiton);padding-bottom:2px}
+
+  .footnote{text-align:center;font-size:.74rem;color:var(--encre-soft);margin-top:24px;font-weight:300}
+  .footnote a{color:var(--laiton);text-decoration:none}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="inner">
+    <a class="brand" href="index.html"><span class="dot">✦</span>Cygnastro</a>
+    <a class="back" href="index.html">← Retour à l'accueil</a>
+  </div>
+</header>
+
+<main class="shell">
+  <div class="card">
+
+    <!-- État formulaire -->
+    <div id="form-area">
+      <svg class="star" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 L18 13 L29 16 L18 19 L16 30 L14 19 L3 16 L14 13 Z" fill="#C39A56"/></svg>
+      <span class="eyebrow">Votre regard compte</span>
+      <h1>Votre avis sur Cygnastro</h1>
+      <p class="intro">Merci d'avoir cheminé avec moi. Votre retour m'aide beaucoup — et il peut donner à d'autres l'élan d'oser franchir le pas. Quelques mots suffisent.</p>
+      <p class="sign">— Céline</p>
+
+      <form id="avis-form" novalidate>
+        <!-- Réglages Web3Forms -->
+        <input type="hidden" name="access_key" value="VOTRE_CLE_WEB3FORMS_ICI" />
+        <input type="hidden" name="subject" value="Nouvel avis — Cygnastro" />
+        <input type="hidden" name="from_name" value="Formulaire d'avis Cygnastro" />
+        <!-- piège à robots, ne pas remplir -->
+        <div class="hp" aria-hidden="true"><label>Ne rien écrire ici<input type="text" name="botcheck" tabindex="-1" autocomplete="off" /></label></div>
+
+        <div class="field">
+          <label class="lab" for="prenom">Votre prénom</label>
+          <input type="text" id="prenom" name="prenom" required placeholder="Ex. : Céline, ou Céline C." />
+        </div>
+
+        <div class="field">
+          <label class="lab" for="accompagnement">Qu'avez-vous suivi avec Cygnastro&nbsp;? <span class="opt">(facultatif)</span></label>
+          <select id="accompagnement" name="accompagnement">
+            <option value="">— Choisir —</option>
+            <option>La Cartographie de lignée</option>
+            <option>L'entretien découverte</option>
+            <option>La lettre de Cygnastro</option>
+            <option>Autre</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="lab" id="note-lab">Votre ressenti global <span class="opt">(facultatif)</span></label>
+          <div class="stars" role="radiogroup" aria-labelledby="note-lab">
+            <input type="radio" id="n5" name="note" value="5" /><label for="n5" title="5 étoiles" aria-label="5 étoiles">★</label>
+            <input type="radio" id="n4" name="note" value="4" /><label for="n4" title="4 étoiles" aria-label="4 étoiles">★</label>
+            <input type="radio" id="n3" name="note" value="3" /><label for="n3" title="3 étoiles" aria-label="3 étoiles">★</label>
+            <input type="radio" id="n2" name="note" value="2" /><label for="n2" title="2 étoiles" aria-label="2 étoiles">★</label>
+            <input type="radio" id="n1" name="note" value="1" /><label for="n1" title="1 étoile" aria-label="1 étoile">★</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="lab" for="avis">Votre avis</label>
+          <textarea id="avis" name="avis" required placeholder="Qu'est-ce qui vous a amenée ? Comment s'est passée la rencontre ? Qu'est-ce qui a résonné, ou vous a aidée à y voir plus clair ?"></textarea>
+        </div>
+
+        <div class="field">
+          <div class="consent">
+            <input type="checkbox" id="consent" name="autorisation_publication" value="Oui, j'autorise la publication" required />
+            <label for="consent">J'autorise Cygnastro à publier mon avis avec mon prénom sur son site. Je sais que je peux en demander le retrait à tout moment en écrivant à cygnastro@gmail.com.</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="lab" for="email">Votre e-mail <span class="opt">(facultatif — uniquement si vous acceptez que Céline puisse vous recontacter)</span></label>
+          <input type="email" id="email" name="email" placeholder="vous@exemple.fr" />
+        </div>
+
+        <button type="submit" class="btn">Envoyer mon avis</button>
+        <div class="err" id="form-err"></div>
+      </form>
+
+      <p class="footnote">Vos données ne servent qu'à recueillir votre avis. <a href="confidentialite.html">Confidentialité</a></p>
+    </div>
+
+    <!-- État remerciement -->
+    <div class="thanks" id="thanks">
+      <svg class="star" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 L18 13 L29 16 L18 19 L16 30 L14 19 L3 16 L14 13 Z" fill="#C39A56"/></svg>
+      <h2>Merci infiniment.</h2>
+      <p>Votre retour est précieux — il sera relu avant d'être publié.</p>
+      <p>À bientôt sous le ciel de Cygnastro.</p>
+      <p class="sign2">— Céline</p>
+      <a href="index.html">Retour à l'accueil</a>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  (function(){
+    var form = document.getElementById('avis-form');
+    var area = document.getElementById('form-area');
+    var thanks = document.getElementById('thanks');
+    var err = document.getElementById('form-err');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      err.style.display = 'none';
+
+      // Validation simple (le navigateur gère "required", on double-vérifie)
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true; btn.textContent = 'Envoi…';
+
+      var data = new FormData(form);
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(json){
+        if(json.success){
+          area.style.display = 'none';
+          thanks.style.display = 'block';
+          thanks.scrollIntoView({ behavior:'smooth', block:'center' });
+        } else {
+          throw new Error(json.message || 'Échec');
+        }
+      })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = 'Envoyer mon avis';
+        err.textContent = "Désolée, l'envoi n'a pas fonctionné. Réessayez dans un instant — ou écrivez-moi directement à cygnastro@gmail.com.";
+        err.style.display = 'block';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
