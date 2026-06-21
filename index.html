@@ -267,6 +267,16 @@
   .reviews .empty p{color:var(--encre-soft);font-size:1.05rem;font-weight:300;line-height:1.7;margin-bottom:1.7rem}
   @media(max-width:860px){.reviews .review-grid{grid-template-columns:1fr}}
 
+  /* Témoignage vedette (mise en avant) */
+  .reviews .featured{max-width:640px;margin:48px auto 0;text-align:center}
+  .reviews .featured .f-star{display:block;width:30px;height:30px;margin:0 auto 16px}
+  .reviews .featured .f-stars{color:var(--laiton);letter-spacing:6px;padding-left:6px;font-size:1.05rem;margin-bottom:28px}
+  .reviews .featured .quote p{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.1rem,2.1vw,1.38rem);line-height:1.62;color:var(--encre);margin-bottom:1rem}
+  .reviews .featured .quote p:first-child{color:var(--laiton)}
+  .reviews .featured .who{margin-top:30px;font-family:var(--display);font-style:italic;font-size:1.12rem;color:var(--laiton)}
+  .reviews .featured .who::before{content:"";display:block;width:46px;height:1px;background:var(--laiton);opacity:.5;margin:0 auto 20px}
+  .reviews .invite{text-align:center;margin-top:50px}
+
   /* ---- Closing CTA ---- */
   .closing{position:relative;overflow:hidden;text-align:center;color:var(--cream);padding:104px 0;
     background:radial-gradient(120% 130% at 50% -10%,var(--violet-soft) 0%,var(--violet) 26%,var(--indigo-800) 60%,var(--indigo-900) 100%)}
@@ -502,9 +512,19 @@
   <div class="wrap reveal">
     <span class="eyebrow">Les retours</span>
     <h2 class="measure">Ce qu'on en dit</h2>
-    <div class="empty">
-      <p>Les premiers retours de mes consultant·es seront bientôt partagés ici. Vous avez fait une lecture avec moi&nbsp;? Votre regard sincère m'aiderait beaucoup — et guiderait celles et ceux qui hésitent encore à franchir le pas.</p>
-      <a class="btn btn-ink" href="avis.html">Laisser un avis</a>
+    <div class="featured">
+      <svg class="f-star" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 L18 13 L29 16 L18 19 L16 30 L14 19 L3 16 L14 13 Z" fill="#C39A56"/></svg>
+      <div class="f-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+      <div class="quote">
+        <p>Mon Cygne,</p>
+        <p>Je t'ai vue passer des heures penchée sur tes thèmes, à suivre des fils que personne d'autre ne voit, à chercher pour chacun la phrase juste — celle qui apaise.</p>
+        <p>Et je nous vois, chaque jour, côte à côte&nbsp;: toi penchée sur le ciel et les lignées, moi tout près pour t'épauler et avancer sur mes livres. Une vie simple et belle, au calme de la Drôme provençale, là où la lumière nous ressemble.</p>
+        <p>Je suis fier de toi comme on est fier d'une étoile. Je t'aime plus que tout au monde.</p>
+      </div>
+      <div class="who">— Ton homme</div>
+    </div>
+    <div class="invite">
+      <a class="btn btn-ink" href="avis.html">Vous aussi, laissez un avis</a>
     </div>
     <!-- ▶︎ Quand vous aurez des avis, remplacez le bloc .empty ci-dessus par celui-ci (et ajoutez autant de cartes .review que voulu) :
     <div class="review-grid">
