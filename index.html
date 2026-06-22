@@ -195,6 +195,7 @@
   @keyframes cygKindle{to{opacity:1}}
   @keyframes cygGlow{to{opacity:.18}}
   @keyframes cygPulse{0%,100%{opacity:1}50%{opacity:.5}}
+  .cyg-swan{transform-box:view-box;transform-origin:0 0;transform:translate(600px,118px) scale(1.2)}
 
   /* ---- Bandeau confiance ---- */
   .trust{background:var(--indigo-900);color:var(--cream-soft);border-bottom:1px solid rgba(195,154,86,.16)}
@@ -327,6 +328,8 @@
     .hero{padding:104px 0 84px}
     section{padding:72px 0}
     .closing{padding:80px 0}
+    .cyg-swan{transform:translate(406px,118px) scale(1.05)}
+    .cyg-line{opacity:.42}
   }
   @media(max-width:560px){
     .trust i{display:none}
@@ -380,7 +383,7 @@
   <canvas class="starfield" aria-hidden="true"></canvas>
   <svg class="sky" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <!-- Cygnus, le cygne céleste (la signature) -->
-    <g transform="translate(600,118) scale(1.2)">
+    <g class="cyg-swan" transform="translate(600,118) scale(1.2)">
       <circle class="cyg-glow" cx="92" cy="80" r="9"/>
       <circle class="cyg-glow" cx="6" cy="64" r="5.5"/>
       <path class="cyg-line" pathLength="100" d="M6,64 L44,72 L92,80"/>
